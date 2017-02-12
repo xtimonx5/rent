@@ -13,6 +13,8 @@ from .admins import (
     CarAdmin,
     CustomerAdmin,
     RentAdmin,
+    ActiveRentModelAdmin,
+    ActiveRentProxy
 )
 
 class MyAdminSite(AdminSite):
@@ -35,3 +37,4 @@ admin_site.register(User)
 admin_site.register(Car, CarAdmin)
 admin_site.register(Customer, CustomerAdmin)
 admin_site.register(Rent, RentAdmin)
+admin_site.register(ActiveRentProxy, ActiveRentModelAdmin)

@@ -78,7 +78,7 @@
 					<div class="gallery">
 
                         {% for c in cars %}
-						    <div class="grid_4">{{ c.make }} {{ c.model }} {{ c.year }}<a href="/static/attachments/{{ c.photo.name }}" class="gal"><img src="/static/attachments/{{ c.photo.name }}" height="100px" width = "180px" alt=""></a> {{ c.engine }}</div>
+						    <div class="grid_4">{{ c.make }} {{ c.model }} {{ c.year }}{{ c.engine }}{{ c.engine }}<a href="/static/attachments/{{ c.photo.name }}" class="gal"><img src="/static/attachments/{{ c.photo.name }}" height="100px" width = "180px" alt="">{{ c.cost }}</a> </div>
                         {% endfor %}
 
                     </div>

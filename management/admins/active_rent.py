@@ -1,8 +1,17 @@
+from ..models import Rent
 from django.contrib import admin
-from django.utils.html import format_html
 
 
-class RentAdmin(admin.ModelAdmin):
+class ActiveRentProxy(Rent):
+    def __str__(self):
+        return str(self.start_date) + '-' + str(self.end_date)
+
+    class Meta:
+        proxy=True
+        verbose_name = 'Active rent'
+
+
+class ActiveRentModelAdmin(admin.ModelAdmin):
     def car_info(self, instance):
         car = instance.car
         if car:
@@ -14,6 +23,7 @@ class RentAdmin(admin.ModelAdmin):
         customer = instance.customer
         if customer:
             return customer.first_name + ' ' + customer.last_name + ' ' + customer.phone
+    list_filter = ('start_date', 'end_date',)
 
     list_display = (
         # 'pk',
@@ -23,23 +33,5 @@ class RentAdmin(admin.ModelAdmin):
         'start_date',
         'end_date'
     )
-
-    list_filter = (
-        'status',
-        'start_date',
-        'end_date',
-    )
-    fields = (
-        'car',
-        'car_info',
-        'customer',
-        'customer_info',
-        'status',
-        'comment',
-        'start_date',
-        'end_date',
-    )
-    readonly_fields = (
-        'car_info',
-        'customer_info',
-    )
+    def get_queryset(self, request):
+        return Rent.objects.all().exclude(status='Returned')
