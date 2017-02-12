@@ -72,10 +72,7 @@ WSGI_APPLICATION = 'diploma.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-import dj_database_url
 
-# DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
-#
 
 
 DATABASES = {
@@ -84,16 +81,14 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-DATABASES['default'] = dj_database_url.config()
-# 'default': {
-#     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#     'NAME': os.getenv('POSTGRES_DB', 'takenote'),
-#     'USER': os.getenv('POSTGRES_USER', 'django'),
-#     'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'django'),
-#     'HOST': os.getenv('POSTGRES_HOST', 'db'),
-#     'PORT': int(os.getenv('POSTGRES_PORT', '5432'))
-# }
-# }
+
+import dj_database_url
+
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+ALLOWED_HOSTS = ['*']
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
@@ -136,3 +131,5 @@ MEDIA_URL = '/static/management/attachments/'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "management/static")
+
+# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
