@@ -1,3 +1,2 @@
-release: python manage.py migrate
-release: python manage.py createsuperuser --username admin --password admin
+python manage.py migrate
 web: gunicorn gettingstarted.wsgi --log-file -
