@@ -26,7 +26,7 @@ from management.views.cars import cars
 urlpatterns = [
     # url(r'^grappelli/', include('grappelli.urls')),
     url(r'^jet/', include('jet.urls', 'jet')),
-    url(r'^admin/', include(admin_site.urls)),
+    url(r'^admin/', admin_site.urls),
     url(r'^$', index, name='index'),
     url(r'^about/$', about, name='about'),
     url(r'^cars/$', cars, name='cars')
