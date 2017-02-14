@@ -1,5 +1,8 @@
 from django.contrib import admin
 from django.utils.html import format_html
+from django.contrib.admin import DateFieldListFilter
+from django.contrib.admin import SimpleListFilter
+from management.models import Car
 
 
 class CarAdmin(admin.ModelAdmin):
@@ -17,8 +20,15 @@ class CarAdmin(admin.ModelAdmin):
         'year',
         'status',
     )
-
-    list_filter = ('status',)
+    # search_fields = ('rents__start_date',)
+    #
+    # def get_search_results(self, request, queryset, search_term):
+    #     queryset, use_distinct = super(CarAdmin, self).get_search_results(request, queryset, search_term)
+    #     if not use_distinct:
+    #         return queryset, use_distinct
+    #     else:
+    #         qs = Car.objects.all().exclude(rents__start_date__lte=use_distinct, rents__end_date__gte=use_distinct)
+    #         return qs,use_distinct
 
     fields = (
         'make',
@@ -27,7 +37,9 @@ class CarAdmin(admin.ModelAdmin):
         'engine',
         'current_image',
         'photo',
-        'status'
+        'status',
+        'cost',
+        'auto_number'
     )
 
     readonly_fields = ('current_image',)

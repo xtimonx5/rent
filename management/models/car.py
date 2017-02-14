@@ -13,6 +13,12 @@ class Car(models.Model):
     engine = models.CharField(max_length=50, null=True, blank=True)
     photo = models.FileField(null=True, blank=True)
     status = models.CharField(choices=STATUS_CHOICES, max_length=20)
-    cost = models.TextField(default='100$', null=True,blank=True)
+    cost = models.CharField(max_length=50,default='100$', null=True, blank=True)
+    auto_number = models.CharField(max_length=50,default='', null=True, blank=True)
+
+
     def __str__(self):
         return self.make + ' ' + self.model + ' ' + str(self.pk)
+
+    class Meta:
+        app_label = 'management'

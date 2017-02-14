@@ -27,7 +27,7 @@ class MyAdminSite(AdminSite):
     # Text to put at the top of the admin index page.
     index_title = ugettext_lazy('Site administration')
 
-admin_site = MyAdminSite()
+admin_site = MyAdminSite(name='management')
 
 
 

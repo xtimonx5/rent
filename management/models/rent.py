@@ -11,7 +11,7 @@ class Rent(models.Model):
         ('Returned', 'Returned'),
     )
 
-    car = models.ForeignKey(Car)
+    car = models.ForeignKey(Car, related_name='rents')
     customer = models.ForeignKey(Customer)
     status = models.CharField(choices=STATUS_CHOICES, max_length=50)
     comment = models.CharField(max_length=100, null=True, blank=True)
@@ -20,3 +20,6 @@ class Rent(models.Model):
 
     def __str__(self):
         return str(self.start_date) + '-' + str(self.end_date)
+
+    class Meta:
+        app_label = 'management'
