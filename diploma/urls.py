@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 # from django.contrib import admin
-from management.admin import admin_site
+# from management.admin import admin_site
 from django.conf.urls.static import static
 from django.conf import settings
 from management.views.index import index
@@ -24,9 +24,10 @@ from management.views.cars import cars
 
 
 urlpatterns = [
-    # url(r'^grappelli/', include('grappelli.urls')),
-    url(r'^jet/', include('jet.urls', 'jet')),
-    url(r'^admin/', admin_site.urls),
+    # url(r'^admin_tools/', include('admin_tools.urls')),
+    # url(r'^jet/', include('jet.urls', 'jet')),
+    url(r'^admin/', include('djadmin.urls')),
+    # url(r'^admin/', admin_site.urls),
     url(r'^$', index, name='index'),
     url(r'^about/$', about, name='about'),
     url(r'^cars/$', cars, name='cars')

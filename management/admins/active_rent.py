@@ -1,5 +1,6 @@
 from ..models import Rent
 from django.contrib import admin
+from djadmin.mixins import DjadminMixin
 
 
 class ActiveRentProxy(Rent):
@@ -7,11 +8,11 @@ class ActiveRentProxy(Rent):
         return str(self.start_date) + '-' + str(self.end_date)
 
     class Meta:
-        proxy=True
+        proxy = True
         verbose_name = 'Active rent'
 
 
-class ActiveRentModelAdmin(admin.ModelAdmin):
+class ActiveRentModelAdmin(DjadminMixin):
     def car_info(self, instance):
         car = instance.car
         if car:
@@ -23,6 +24,7 @@ class ActiveRentModelAdmin(admin.ModelAdmin):
         customer = instance.customer
         if customer:
             return customer.first_name + ' ' + customer.last_name + ' ' + customer.phone
+
     list_filter = ('start_date', 'end_date',)
 
     list_display = (
@@ -33,5 +35,6 @@ class ActiveRentModelAdmin(admin.ModelAdmin):
         'start_date',
         'end_date'
     )
+
     def get_queryset(self, request):
         return Rent.objects.all().exclude(status='Returned')
