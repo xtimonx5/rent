@@ -34,7 +34,9 @@ class MyAdminSite(AdminSite):
 # admin_site = MyAdminSite(name='management')
 
 admin.site.unregister(Group)
-# admin_site.register(User)
+
+admin.site.site_header = 'Samuel rent car department'
+admin.site.site_title = 'Automobile rent car dep'
 
 admin.site.register(Car, CarAdmin)
 admin.site.register(Customer, CustomerAdmin)
