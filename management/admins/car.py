@@ -16,14 +16,6 @@ def validate(date_text):
 
 
 class CarAdmin(admin.ModelAdmin):
-    def current_image(self, instance):
-        image = instance.photo
-        if image:
-            return format_html(
-                u'<img src="/static/attachments/%s" width = "500px" object-fit: contain; />' % image)
-        else:
-            return None
-
     list_display = (
         'make',
         'model',
@@ -41,7 +33,7 @@ class CarAdmin(admin.ModelAdmin):
                 qs = Car.objects.all().exclude(rents__start_date__lte=search_term, rents__end_date__gte=search_term)
                 return qs, use_distinct
             else:
-                messages.add_message(request,messages.ERROR,'Try YYYY-MM-DD format date')
+                messages.add_message(request, messages.ERROR, 'Try YYYY-MM-DD format date')
                 return queryset, use_distinct
 
     fields = (
@@ -49,11 +41,8 @@ class CarAdmin(admin.ModelAdmin):
         'model',
         'year',
         'engine',
-        'current_image',
         'photo',
         'status',
         'cost',
         'auto_number'
     )
-
-    readonly_fields = ('current_image',)
