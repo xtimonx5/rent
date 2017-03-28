@@ -131,10 +131,10 @@ USE_TZ = True
 
 
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'attachments')
-MEDIA_URL = '/attachments/'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'management/static/attachments')
-# MEDIA_URL = '/static/management/attachments/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'attachments')
+# MEDIA_URL = '/attachments/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'management/static/attachments')
+MEDIA_URL = '/static/management/attachments/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
