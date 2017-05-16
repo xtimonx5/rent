@@ -7,13 +7,12 @@
         <option name="settingsModule" value="diploma/settings.py" />
         <option name="manageScript" value="manage.py" />
         <option name="environment" value="&lt;map/&gt;" />
-        <option name="commandsToSkip" value="" />
       </configuration>
     </facet>
   </component>
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$" />
-    <orderEntry type="jdk" jdkName="Python 3.5.2 virtualenv at ~/my_project/polina_diploma/venv" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.6.1 virtualenv at ~/Projects/rent/venv" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TemplatesService">

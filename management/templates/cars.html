@@ -48,7 +48,7 @@
 								<ul class="sf-menu">
 									<li><a href="{% url 'index' %}">Home</a></li>
 									<li class="current"><a href="{% url 'cars' %}">Cars</a></li>
-									
+
 									<li><a href="{% url 'about' %}">Contacts</a></li>
 								</ul>
 							</nav>
@@ -78,11 +78,11 @@
 					<div class="gallery">
 
                         {% for c in cars %}
-						    <div class="grid_4">{{ c.make }} {{ c.model }} {{ c.year }}{{ c.engine }}{{ c.engine }}<a href="/attachments/{{ c.photo.name }}" class="gal"><img src="/attachments/{{ c.photo.name }}" height="100px" width = "180px" alt="">{{ c.cost }}</a> </div>
+						    <div class="grid_4">{{ c.make }} {{ c.model }} {{ c.year }}{{ c.engine }}{{ c.engine }}<a href="/attachments/{{ c.photo.name }}" class="gal"><img src="/attachments/{{ c.photo.name }}" height=auto width = "180px" alt="">{{ c.cost }}</a> </div>
                         {% endfor %}
 
                     </div>
-					
+
 				</div>
 			</div>
 		</div>
@@ -99,7 +99,7 @@
 					<div class="copy">
 						<div class="st1">
 						<div class="brand">Your<span class="color1">R</span>ent </div>
-						&copy; 2017	| <a href="#">Privacy Policy</a> </div> 
+						&copy; 2017	| <a href="#">Privacy Policy</a> </div>
 					</div>
 				</div>
 				<div class="clear"></div>
