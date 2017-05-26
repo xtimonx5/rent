@@ -22,7 +22,6 @@ class RentInline(admin.TabularInline):
         'customer',
         'status',
         'comment',
-        'address'
     )
 
     verbose_name = 'History of activity'
