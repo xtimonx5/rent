@@ -16,7 +16,6 @@ class RentAdmin(admin.ModelAdmin):
             return customer.first_name + ' ' + customer.last_name + ' ' + customer.phone
 
     list_display = (
-        # 'pk',
         'status',
         'customer_info',
         'car_info',
